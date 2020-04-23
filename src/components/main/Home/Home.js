@@ -41,7 +41,7 @@ const Home = (props) => {
                 {/*Статистика*/}
                 <div className={css.statistic}>
                     <div className={css.stat}>
-                        <div className={css.statBar}><span>Заражено: </span><span>{props.confirmed}</span></div>
+                        <div className={css.statBar}><span>Подтверждено: </span><span>{props.confirmed}</span></div>
                         <div className={css.statBar}><span>Выздоровело: </span><span>{props.recovered}</span></div>
                         <div className={css.statBar}><span>Смертей: </span><span>{props.deaths}</span></div>
                     </div>
