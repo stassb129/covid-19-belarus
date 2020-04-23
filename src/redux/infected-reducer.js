@@ -1,5 +1,26 @@
 export const INIT = 'INIT';
 
+const dateTranslate = (date) => {
+    let outDate = {
+        date: '',
+        time: ''
+    }
+    let dCheck = true;
+    let tCheck = false;
+
+    for (let i=0; i<date.length; i++){
+        if((date[i] !== 'T') && (dCheck === true)){
+            outDate.date+=date[i];
+        }else {
+            dCheck = false;
+            tCheck = true;
+        }
+        if((date[i] !== 'Z') && (tCheck === true) && (date[i] !== 'T')){
+            outDate.time+=date[i];
+        }
+    }
+    return outDate
+}
 
 const initialState = {
     confirmed: 0,
@@ -15,7 +36,7 @@ const infectedReducer = (state =initialState, action) => {
                 confirmed: action.data.Confirmed,
                 deaths: action.data.Deaths,
                 recovered: action.data.Recovered,
-                date: action.data.Date
+                date: dateTranslate(action.data.Date)
             }
         default:
             return state

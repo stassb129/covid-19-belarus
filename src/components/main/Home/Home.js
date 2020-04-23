@@ -13,7 +13,10 @@ const Home = (props) => {
 
                 {/*Дата*/}
                 <div className={css.date}>
-                    <h4>{props.date}</h4>
+                    <div>
+                        <h4>{props.date.date}</h4>
+                        <h5>{props.date.time}</h5>
+                    </div>
                 </div>
                 {/*Лого*/}
                 <div className={css.logo}>
@@ -45,9 +48,8 @@ const Home = (props) => {
                         <div className={css.statBar}><span>Выздоровело: </span><span>{props.recovered}</span></div>
                         <div className={css.statBar}><span>Смертей: </span><span>{props.deaths}</span></div>
                     </div>
-                    <div className={css.picture}> </div>
+                    <div className={css.picture}></div>
                 </div>
-
 
 
             </div>
