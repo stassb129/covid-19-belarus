@@ -4,6 +4,7 @@ import './../../../App.scss';
 import classNames from 'classnames';
 import Chart from "../../ Chart/Chart";
 
+
 const Home = (props) => {
 
 
@@ -34,7 +35,7 @@ const Home = (props) => {
                 </div>
 
                 {/*график*/}
-                <div className="chart">
+                <div className={css.chart}>
                     <Chart
                         confirmed={props.confirmed}
                         deaths={props.deaths}

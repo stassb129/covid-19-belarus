@@ -2,12 +2,9 @@ import {connect} from "react-redux";
 import Home from './Home';
 import React from 'react';
 import {initAC} from "../../../redux/infected-reducer";
-
 const axios = require('axios').default;
 
-
 class HomeContainer extends React.Component {
-
     componentDidMount() {
         axios.get('https://api.covid19api.com/live/country/belarus/status/confirmed')
             .then((response) => {
@@ -22,6 +19,7 @@ class HomeContainer extends React.Component {
 
     render() {
         return (
+
                 <Home
                     confirmed={this.props.confirmed}
                     deaths={this.props.deaths}
