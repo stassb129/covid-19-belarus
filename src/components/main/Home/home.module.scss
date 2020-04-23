@@ -1,0 +1,86 @@
+$red: rgb(225, 99, 132);
+$green: rgb(76, 175, 80);
+$black: rgb(33, 33, 33);
+
+
+.date{
+  display: flex;
+  justify-content: flex-end;
+  h4{
+    font-size: 1.2em;
+  }
+}
+.logo{
+  margin-top: 55px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.1em;
+  font-weight: 400;
+}
+
+.covid{
+  font-size: 1.2em;
+  margin: 30px 0 60px;
+  width: 100%;
+  text-align: center;
+}
+.statistic{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.picture{
+  width: 50%;
+  background-image: url(./../../../assets/med.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 230px;
+}
+
+.stat{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.statBar{
+  background-color: white;
+  padding: 20px 60px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  &:nth-child(1){
+    border-right: 15px solid $red;
+    span:nth-child(2){
+      border-bottom: 2px solid $red;
+    }
+  }
+  &:nth-child(2){
+    border-right: 15px solid $green;
+    span:nth-child(2){
+      border-bottom: 2px solid $green;
+    }
+  }
+  &:nth-child(3){
+    border-right: 15px solid $black;
+    span:nth-child(2){
+      border-bottom: 2px solid $black;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .statistic{
+    flex-direction: column-reverse;
+  }
+  .stat{
+    width: 100%;
+  }
+  .picture{
+    width: 100%;
+  }
+}
