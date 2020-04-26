@@ -3,10 +3,19 @@ import css from './home.module.scss';
 import './../../../App.scss';
 import classNames from 'classnames';
 import Chart from "../../ Chart/Chart";
+import CheckBox from "../../CheckBox/CheckBox";
+import LinearChart from "../../ Chart/LinearChart";
 
 
 const Home = (props) => {
-
+    const getDateAndTime = () => {
+        let date = new Date()
+        let dateTime ={
+            date: `${date.getDate()}:${date.getMonth()}:${date.getFullYear()}`,
+            time: `${date.getHours()}:${date.getMinutes()}`
+        }
+        return dateTime
+    }
 
     return (
         <div className="wrapper">
@@ -15,8 +24,8 @@ const Home = (props) => {
                 {/*Дата*/}
                 <div className={css.date}>
                     <div>
-                        <h4>{props.date.date}</h4>
-                        <h5>{props.date.time}</h5>
+                        <h4>{getDateAndTime().date}</h4>
+                        {/*<h5>{getDateAndTime().time}</h5>*/}
                     </div>
                 </div>
                 {/*Лого*/}
@@ -35,11 +44,22 @@ const Home = (props) => {
                 </div>
 
                 {/*график*/}
+                <CheckBox chartChange={props.setChart}/>
+
                 <div className={css.chart}>
-                    <Chart
+
+                    {!props.isCheckChart ?
+                        <Chart
                         confirmed={props.confirmed}
                         deaths={props.deaths}
-                        recovered={props.recovered}/>
+                        recovered={props.recovered}/> :
+
+                        <LinearChart
+                            previouslyConfirmed={props.previouslyConfirmed}
+                            previouslyDeaths={props.previouslyDeaths}
+                            previouslyRecovered={props.previouslyRecovered}/>
+                    }
+
                 </div>
 
                 {/*Статистика*/}
@@ -48,6 +68,10 @@ const Home = (props) => {
                         <div className={css.statBar}><span>Подтверждено: </span><span>{props.confirmed}</span></div>
                         <div className={css.statBar}><span>Выздоровело: </span><span>{props.recovered}</span></div>
                         <div className={css.statBar}><span>Смертей: </span><span>{props.deaths}</span></div>
+                        <div className={css.statBar}><span>В тяжёлом состоянии: </span><span>{props.critical}</span></div>
+                        <div className={css.statBar}><span>Потверждено сегодно: </span><span>{props.todayCases}</span></div>
+                        <div className={css.statBar}><span>Умерло сегодня: </span><span>{props.todayDeaths}</span></div>
+                        <div className={css.statBar}><span>Проведено тестов: </span><span>{props.tests}</span></div>
                     </div>
                     <div className={css.picture}></div>
                 </div>

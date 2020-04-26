@@ -1,19 +1,19 @@
 import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import {Bar, Line} from 'react-chartjs-2';
 
 
 const Chart = (props) => {
     let dataSet = {
         labels: ['Confirmed', 'Deaths', 'Recovered'],
-        datasets:[
+        datasets: [
             {
                 label: 'Confirmed Statistic',
-                data:[
+                data: [
                     props.confirmed,
                     props.deaths,
                     props.recovered
                 ],
-                backgroundColor:[
+                backgroundColor: [
                     'rgba(225, 99, 132, 0.6)',
                     'rgba(33, 33, 33, 0.6)',
                     'rgba(76, 175, 80, 0.6)',
@@ -22,13 +22,19 @@ const Chart = (props) => {
         ]
     }
 
+
     return (
         <Bar data={dataSet}
-            width={100}
-            height={400}
-            options={{ maintainAspectRatio: false }}
+             width={100}
+             height={400}
+             options={{maintainAspectRatio: false}}
         />
-    )
+
+    // <Line data={dataSet}
+    //      width={100}
+    //      height={100}
+    // />
+)
 }
 
 export default Chart;
