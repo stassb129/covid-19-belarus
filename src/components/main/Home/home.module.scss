@@ -50,9 +50,27 @@ $black: rgb(33, 33, 33);
   margin-bottom: 60px;
 }
 
+.secondStatistic {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
 .picture {
   width: 50%;
   background-image: url(./../../../assets/med.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 230px;
+}
+
+.secondPicture {
+  width: 50%;
+  background-image: url(./../../../assets/med2.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -66,7 +84,7 @@ $black: rgb(33, 33, 33);
   justify-content: space-between;
 }
 
-.statBar {
+.mainStatBar {
   background-color: white;
   padding: 20px 60px 20px 20px;
   margin: 5px 0;
@@ -75,7 +93,6 @@ $black: rgb(33, 33, 33);
   border-right: 15px solid #6d6d6d;
   &:nth-child(1) {
     border-right: 15px solid $red;
-
     span:nth-child(2) {
       border-bottom: 2px solid $red;
     }
@@ -98,6 +115,20 @@ $black: rgb(33, 33, 33);
   }
 }
 
+.statBar {
+  background-color: white;
+  padding: 20px 20px 20px 60px;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  border-left: 15px solid #6d6d6d;
+  &:nth-child(all) {
+    border-right: 15px solid $red;
+  }
+}
+
+
 @media (max-width: 700px) {
   .statistic {
     flex-direction: column-reverse;
@@ -106,6 +137,9 @@ $black: rgb(33, 33, 33);
     width: 100%;
   }
   .picture {
+    width: 100%;
+  }
+  .secondPicture{
     width: 100%;
   }
 }

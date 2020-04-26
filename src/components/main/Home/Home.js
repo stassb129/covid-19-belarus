@@ -65,15 +65,21 @@ const Home = (props) => {
                 {/*Статистика*/}
                 <div className={css.statistic}>
                     <div className={css.stat}>
-                        <div className={css.statBar}><span>Подтверждено: </span><span>{props.confirmed}</span></div>
-                        <div className={css.statBar}><span>Выздоровело: </span><span>{props.recovered}</span></div>
-                        <div className={css.statBar}><span>Смертей: </span><span>{props.deaths}</span></div>
+                        <div className={css.mainStatBar}><span>Подтверждено: </span><span>{props.confirmed}</span></div>
+                        <div className={css.mainStatBar}><span>Выздоровело: </span><span>{props.recovered}</span></div>
+                        <div className={css.mainStatBar}><span>Смертей: </span><span>{props.deaths}</span></div>
+                    </div>
+                    <div className={css.picture}></div>
+                </div>
+
+                <div className={`${css.statistic} ${css.secondStatistic}` }>
+                    <div className={css.stat}>
                         <div className={css.statBar}><span>В тяжёлом состоянии: </span><span>{props.critical}</span></div>
                         <div className={css.statBar}><span>Потверждено сегодно: </span><span>{props.todayCases}</span></div>
                         <div className={css.statBar}><span>Умерло сегодня: </span><span>{props.todayDeaths}</span></div>
                         <div className={css.statBar}><span>Проведено тестов: </span><span>{props.tests}</span></div>
                     </div>
-                    <div className={css.picture}></div>
+                    <div className={css.secondPicture}></div>
                 </div>
 
 
