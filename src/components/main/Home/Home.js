@@ -10,13 +10,13 @@ import LinearChart from "../../ Chart/LinearChart";
 const Home = (props) => {
     const getDateAndTime = () => {
         let date = new Date()
-        let month = () => {
+        let month = (date) => {
             if (date.getMonth() < 10)
-             return `0${date.getMonth()}`
-            else return date.getMonth()
+             return `0${date.getMonth()+1}`
+            else return date.getMonth()+1
         }
         let dateTime ={
-            date: `${date.getDate()}:${month()}:${date.getFullYear()}`,
+            date: `${date.getDate()}:${month(date)}:${date.getFullYear()}`,
             time: `${date.getHours()}:${date.getMinutes()}`
         }
         return dateTime
