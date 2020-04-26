@@ -10,8 +10,13 @@ import LinearChart from "../../ Chart/LinearChart";
 const Home = (props) => {
     const getDateAndTime = () => {
         let date = new Date()
+        let month = () => {
+            if (date.getMonth() < 10)
+             return `0${date.getMonth()}`
+            else return date.getMonth()
+        }
         let dateTime ={
-            date: `${date.getDate()}:${date.getMonth()}:${date.getFullYear()}`,
+            date: `${date.getDate()}:${month()}:${date.getFullYear()}`,
             time: `${date.getHours()}:${date.getMinutes()}`
         }
         return dateTime
@@ -75,7 +80,7 @@ const Home = (props) => {
                 <div className={`${css.statistic} ${css.secondStatistic}` }>
                     <div className={css.stat}>
                         <div className={css.statBar}><span>В тяжёлом состоянии: </span><span>{props.critical}</span></div>
-                        <div className={css.statBar}><span>Потверждено сегодно: </span><span>{props.todayCases}</span></div>
+                        <div className={css.statBar}><span>Подтверждено сегодня: </span><span>{props.todayCases}</span></div>
                         <div className={css.statBar}><span>Умерло сегодня: </span><span>{props.todayDeaths}</span></div>
                         <div className={css.statBar}><span>Проведено тестов: </span><span>{props.tests}</span></div>
                     </div>
