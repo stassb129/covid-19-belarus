@@ -1,8 +1,10 @@
 export const INIT = 'INIT';
-export const PREVIOUSLY_INIT = 'PREVIOUSLY_INIT'
+export const PREVIOUSLY_INIT = 'PREVIOUSLY_INIT';
+export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 const initialState = {
 
+    isFetching: false,
     previouslyConfirmed: {},
     previouslyDeaths: {},
     previouslyRecovered: {},
@@ -34,24 +36,39 @@ const infectedReducer = (state =initialState, action) => {
                 previouslyDeaths: {...action.data.timeline.deaths},
                 previouslyRecovered: {...action.data.timeline.recovered}
             }
+        case TOGGLE_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.toggle
+            }
         default:
             return state
     }
 }
 
-export const initAC = (data) =>{
+
+
+export const init = (data) =>{
     return{
         type: INIT,
         data: data
     }
 }
 
-export const previouslyInitAC = (data) =>{
+export const previouslyInit = (data) =>{
     return{
         type: PREVIOUSLY_INIT,
         data: data
     }
 }
+
+export const toggleIsFetching = (toggle) =>{
+    return{
+        type: TOGGLE_IS_FETCHING,
+        toggle: toggle
+    }
+}
+
 
 
 export default infectedReducer;

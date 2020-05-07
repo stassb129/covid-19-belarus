@@ -5,27 +5,29 @@ import classNames from 'classnames';
 import Chart from "../../ Chart/Chart";
 import CheckBox from "../../CheckBox/CheckBox";
 import LinearChart from "../../ Chart/LinearChart";
+import Preloader from "../../Preloader/Preloader";
 
 
 const Home = (props) => {
+
     const getDateAndTime = () => {
-        let date = new Date()
-        let month = (date) => {
-            if (date.getMonth() < 10)
-             return `0${date.getMonth()+1}`
-            else return date.getMonth()+1
-        }
+        let date = new Date();
+
+        let data = (date) => date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+        let month = (date) => date.getMonth() < 10 ? `0${date.getMonth()+1}` : date.getMonth()+1;
+
         let dateTime ={
-            date: `${date.getDate()}:${month(date)}:${date.getFullYear()}`,
-            time: `${date.getHours()}:${date.getMinutes()}`
+            date: `${data(date)}:${month(date)}:${date.getFullYear()}`,
         }
         return dateTime
     }
 
     return (
         <div className="wrapper">
-            <div className="container">
 
+            {!props.isFetching ? <Preloader /> : null}
+
+            <div className="container">
                 {/*Дата*/}
                 <div className={css.date}>
                     <div>
@@ -86,6 +88,8 @@ const Home = (props) => {
                     </div>
                     <div className={css.secondPicture}></div>
                 </div>
+
+
 
 
             </div>

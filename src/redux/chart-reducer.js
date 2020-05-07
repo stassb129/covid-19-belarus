@@ -16,7 +16,9 @@ const chartReducer = (state =initialState, action) => {
     }
 }
 
-export const setChartAC = () =>{
+
+
+export const setChart = () =>{
     return{
         type: CHECK,
     }

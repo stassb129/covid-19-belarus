@@ -1,18 +1,19 @@
 import {connect} from "react-redux";
 import Home from './Home';
 import React from 'react';
-import {initAC, previouslyInitAC} from "../../../redux/infected-reducer";
-import {setChartAC} from "../../../redux/chart-reducer";
+import {init, previouslyInit, toggleIsFetching} from "../../../redux/infected-reducer";
+import {setChart} from "../../../redux/chart-reducer";
 const axios = require('axios').default;
 
 class HomeContainer extends React.Component {
 
      getStatToInit = (api, initMethod) =>{
+         this.props.toggleIsFetching(false)
         axios.get(api)
             .then((response) => {
                 let data = response.data;
-                console.log(data);
-                initMethod(data)
+                initMethod(data);
+                this.props.toggleIsFetching(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -22,7 +23,6 @@ class HomeContainer extends React.Component {
     componentDidMount() {
         this.getStatToInit('https://corona.lmao.ninja/v2/countries/belarus', this.props.init);
         this.getStatToInit('https://corona.lmao.ninja/v2/historical/Belarus?lastdays=30', this.props.previouslyInit);
-
 
     }
     render() {
@@ -43,6 +43,7 @@ class HomeContainer extends React.Component {
                     previouslyDeaths={this.props.previouslyDeaths}
                     previouslyRecovered={this.props.previouslyRecovered}
 
+                    isFetching={this.props.isFetching}
                     isCheckChart={this.props.isCheckChart}
                     setChart={this.props.setChart}
                     // date={this.props.date}
@@ -65,24 +66,15 @@ let mapStateToProps = (state) => {
         critical: state.infectedPage.critical,
         tests: state.infectedPage.tests,
 
+        isFetching: state.infectedPage.isFetching,
         isCheckChart: state.checkChart.isCheckChart
-
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        init: (data) => {
-            dispatch(initAC(data))
-        },
-        previouslyInit: (data) =>{
-            dispatch(previouslyInitAC(data))
-    },
-        setChart: () =>{
-            dispatch(setChartAC())
-        }
 
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps, {
+    previouslyInit,
+    init,
+    setChart,
+    toggleIsFetching
+})(HomeContainer);
